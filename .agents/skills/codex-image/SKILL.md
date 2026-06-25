@@ -283,7 +283,7 @@ Five maximally distinct anchors cover every lane. Each ships a paste-ready fragm
 Express every lever as text inside the Final Generation Prompt and as the built-in generation request — never as direct OpenAI API calls or keys. Use only knobs the active built-in generation surface accepts; if it does not accept a knob, fold the intent into prompt text (the model honors the intent regardless of surface).
 
 - quality: request `quality high` for any infographic-lane asset and any text-bearing image — the single biggest legibility lever for small, dense, or multi-font copy. `medium` is acceptable only for sparse, large-type hero work.
-- size and aspect: native to the crop, edges multiples of 16, max edge 2048px (the reliable high-detail ceiling; treat 4K as experimental). Match the aspect so the model composes in-frame: e.g. 1024x1536 portrait poster, ~1080x1350 4:5 LinkedIn, 1536x1024 landscape hero, 1024x1024 square feed.
+- size and aspect: native to the crop, edges multiples of 16, max edge 2048px (this skill's conservative reliable high-detail policy; treat larger and 4K outputs as experimental when the active surface supports them). Match the aspect so the model composes in-frame: e.g. 1024x1536 portrait poster, ~1080x1350 4:5 LinkedIn, 1536x1024 landscape hero, 1024x1024 square feed.
 - Do not request `input_fidelity` (a no-op on this model; rely on explicit "Preserve:" prompt text instead). Do not request a transparent background (rejected on `gpt-image-2`; generate on a flat solid color and key out downstream if needed).
 - Reference and style images, only if the built-in surface accepts them: reference each by index and role ("Image 1: subject; Image 2: style reference — apply Image 2's look to the layout") and state preserve-vs-change. A shared style reference can lock a pack's house look across targets; if references are unavailable, carry the look in prompt text.
 - Bake the failure-mode guards into every prompt: lead with the subject; quote exact strings with "render verbatim, exactly once, no extra characters, no duplicate text"; add material and micro-detail cues to escape plasticky photoreal; keep on-image copy as tight as the design allows.
@@ -292,7 +292,7 @@ Generating several candidates and selecting the best is available only when the 
 
 ### Refinement: Edit The Best Frame, Don't Re-Roll
 
-Stay inside the one shared retry budget. When the single allowed regeneration fires, prefer an edit pass over a from-scratch re-roll so the good composition survives:
+Stay inside the one shared retry budget. When the single allowed regeneration fires, prefer an edit pass only when the active built-in image surface supports image editing or image-to-image revision, so the good composition survives. If no edit capability is confirmed, reuse the same wording as a focused fresh-generation retry prompt instead of claiming an edit operation:
 
 - `Change:` the single flaw, with the exact corrected string if it is text. `Preserve:` layout, headline glyphs, palette, lighting, material and texture, and all other labels.
 - Restate the full Preserve list every iteration, and keep the change small and single — over-constrained edits drift.
