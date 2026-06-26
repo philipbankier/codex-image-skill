@@ -103,6 +103,12 @@ The generated image should be source-specific, readable, and useful. The agent s
 
 The skill chooses a lane before prompting: Social Asset Director for launch, social, hero, open graph, teaser, and shareable assets; Infographic Director for dense technical maps, codebase explainers, research summaries, timelines, stacks, comparisons, and one-pagers. Prompt artifacts must include Prompt Preflight and P0/P1/P2 text priority, and generated images must pass a Creative Quality Gate.
 
+For visual quality, the skill commits to one named house look per image, such as Swiss Editorial Knockout, Blueprint Cyanotype, Riso Two-Tone Editorial, Studio Hero Render, or Cinematic Macro Still-Life. It carries a compact art-direction block into the `gpt-image-2` prompt, including medium, palette with meaning, type, light, and material, instead of stripping style at generation time.
+
+For text-bearing assets, the prompt requests `quality high` at a native crop with max edge 2048px. The 2048px max edge is this skill's conservative reliable high-detail policy, not a hard model ceiling. Larger outputs are treated as experimental when the active built-in surface supports them.
+
+The Visual Craft System folds positive craft checks into the existing Creative Quality Gate without adding a new retry budget. When a retry is needed, the skill prefers editing the best frame only if the active built-in image surface supports image editing or image-to-image revision. Otherwise it uses `Change:` and `Preserve:` wording as a focused fresh-generation retry prompt instead of claiming an edit operation.
+
 ## Development
 
 Run static checks with:
