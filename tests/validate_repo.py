@@ -218,6 +218,52 @@ def test_skill_defines_text_budget_policy_and_director_schemas() -> None:
     require_not_contains("templates/image-prompt.md", "Use premium modern technical infographic design")
 
 
+def test_visual_craft_system_contract() -> None:
+    require_all_contains(
+        ".agents/skills/codex-image/SKILL.md",
+        [
+            "Visual Craft System",
+            "Craft survives into the Final Generation Prompt",
+            "Commit To One House Look",
+            "House Aesthetic Library",
+            "Swiss Editorial Knockout",
+            "Blueprint Cyanotype",
+            "Riso Two-Tone Editorial",
+            "Studio Hero Render",
+            "Cinematic Macro Still-Life",
+            "Make Typography The Hero, Then Protect The Labels",
+            "gpt-image-2 Lever Policy",
+            "Edit The Best Frame, Don't Re-Roll",
+            "Optional Hybrid Lane",
+            "quality high",
+            "max edge 2048px",
+        ],
+    )
+    require_all_contains(
+        "templates/image-prompt.md",
+        [
+            "Chosen house look",
+            "Levers (quality/size)",
+            "Subject-first sentence",
+            "House-look block",
+            "Hero type",
+            "quality high",
+            "max edge 2048px",
+        ],
+    )
+    require_all_contains(
+        "README.md",
+        [
+            "Visual Craft System",
+            "Swiss Editorial Knockout",
+            "Blueprint Cyanotype",
+            "Riso Two-Tone Editorial",
+            "Studio Hero Render",
+            "Cinematic Macro Still-Life",
+        ],
+    )
+
+
 def test_public_release_hardening() -> None:
     require_all_contains(
         ".gitignore",
@@ -492,6 +538,7 @@ def main() -> None:
         test_skill_contract,
         test_skill_defines_installed_runtime_directors,
         test_skill_defines_text_budget_policy_and_director_schemas,
+        test_visual_craft_system_contract,
         test_public_release_hardening,
         test_privacy_contract_covers_sensitive_non_secret_material,
         test_quality_gate_retry_and_acceptance_evidence_contract,

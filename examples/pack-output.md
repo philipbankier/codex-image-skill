@@ -32,9 +32,11 @@ codex-image-output-project-20260619-153000/
 
 Target roles:
 
-- `dense-linkedin`: Infographic Director
-- `social-teaser`: Social Asset Director
-- `blog-hero`: Social Asset Director
+- `dense-linkedin`: Infographic Director, default look Swiss Editorial Knockout, or Blueprint Cyanotype for structural systems.
+- `social-teaser`: Social Asset Director, default look Studio Hero Render.
+- `blog-hero`: Social Asset Director, default look Cinematic Macro Still-Life, or Studio Hero Render.
+
+Each target requests `quality high` at its native crop, max edge 2048px. When the built-in generation surface accepts a reference image, a shared style reference can lock the chosen house look across all three targets so the pack feels like one family. If references are unavailable, each prompt carries the house look in text.
 
 Target-differentiation excerpt:
 
